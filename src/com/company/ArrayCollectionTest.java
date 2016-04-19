@@ -74,14 +74,14 @@ public class ArrayCollectionTest {
         return a > b;
     }
 
-    public int[] sortArray(int[] array) {
+    public int[] sortArray(int[] array, IntComparator comparator) {
         int n = array.length;
         int temp;
         boolean flag;
         for (int i = 0; i < n - 1; i++) {
             flag = false;
             for (int j = 0; j < n - i - 1; j++) {
-                if (isBigger(array[j], array[j + 1])) {
+                if (comparator.isBigger(array[j], array[j+1])) {
                     temp = array[j];
                     array[j] = array[j + 1];
                     array[j + 1] = temp;
