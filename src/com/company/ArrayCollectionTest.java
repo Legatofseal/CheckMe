@@ -27,7 +27,7 @@ public class ArrayCollectionTest {
 
     public void addElement(int index, Object object) {
         if (index < 0) {
-            index = 0;
+            index = 0;//
         }
         if (index > size) {
             index = size;
