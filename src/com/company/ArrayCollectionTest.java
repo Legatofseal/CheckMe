@@ -9,7 +9,7 @@ public class ArrayCollectionTest {
     Object[] internalArray;
 
 //I made some changes
-    //some other changes
+    //some other change
     public ArrayCollectionTest() {
         this.internalArray = new Object[capacity];
 
