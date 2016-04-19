@@ -8,7 +8,7 @@ public class ArrayCollectionTest {
     int size = 0;
     Object[] internalArray;
 
-
+//I made some changes
     public ArrayCollectionTest() {
         this.internalArray = new Object[capacity];
 
