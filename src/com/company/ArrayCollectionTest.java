@@ -23,6 +23,27 @@ public class ArrayCollectionTest {
     public int getSize() {
         return size;
     }
+     public void AddElement (int index, Object object) throws Exception {
+
+         if (index<0||index>size){
+             throw new Exception("Out of range");
+         }
+         else {
+             if (size < capacity) {
+                 for (int i=size; i>index; i--){
+                     internalArray[size]=internalArray[size-1];
+                 }
+                 internalArray[index]=object;
+             } else {
+                 reSizeArray();
+                 for (int i=size; i>index; i--){
+                     internalArray[size]=internalArray[size-1];
+                 }
+                 internalArray[index]=object;
+             }
+             ++size;
+         }
+     }
 
     public void AddElement(Object object) {
         if (size < capacity) {
