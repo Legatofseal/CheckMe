@@ -5,14 +5,14 @@ import java.lang.String;
 public class Main {
 
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args)  {
         System.out.print("Hello");
         ArrayCollectionTest test = new ArrayCollectionTest();
-        test.AddElement("test1");
-        test.AddElement("test2");
-        test.AddElement("test3");
-        test.AddElement("test4");
-        test.AddElement(2, "test50");
-        test.AddElement("test5");
+        test.addElement("test1");
+        test.addElement("test2");
+        test.addElement("test3");
+        test.addElement("test4");
+        test.addElement(2, "test50");
+        test.addElement("test5");
     }
 }

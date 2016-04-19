@@ -8,7 +8,7 @@ public class ArrayCollectionTest {
     int size = 0;
     Object[] internalArray;
 
-//I made some changes
+    //I made some changes
     //some other change
     public ArrayCollectionTest() {
         this.internalArray = new Object[capacity];
@@ -19,33 +19,37 @@ public class ArrayCollectionTest {
         this.capacity = capacity;
         this.internalArray = new Object[capacity];
     }
-///test
+
+    ///test
     public int getSize() {
         return size;
     }
-     public void AddElement (int index, Object object) throws Exception {
 
-         if (index<0||index>size){
-             throw new Exception("Out of range");
-         }
-         else {
-             if (size < capacity) {
-                 for (int i=size; i>index; i--){
-                     internalArray[size]=internalArray[size-1];
-                 }
-                 internalArray[index]=object;
-             } else {
-                 reSizeArray();
-                 for (int i=size; i>index; i--){
-                     internalArray[size]=internalArray[size-1];
-                 }
-                 internalArray[index]=object;
-             }
-             ++size;
-         }
-     }
+    public void addElement(int index, Object object) {
+        if (index < 0) {
+            index = 0;
+        }
+        if (index > size) {
+            index = size;
+        }
 
-    public void AddElement(Object object) {
+        if (size < capacity) {
+            for (int i = size; i > index; i--) {
+                internalArray[size] = internalArray[size - 1];
+            }
+            internalArray[index] = object;
+        } else {
+            reSizeArray();
+            for (int i = size; i > index; i--) {
+                internalArray[size] = internalArray[size - 1];
+            }
+            internalArray[index] = object;
+        }
+        ++size;
+
+    }
+
+    public void addElement(Object object) {
         if (size < capacity) {
             internalArray[size] = object;
         } else {
@@ -55,7 +59,7 @@ public class ArrayCollectionTest {
         ++size;
     }
 
-    public void reSizeArray() {
+    private void reSizeArray() {
         capacity = capacity * 2;
         Object[] tempArray = new Object[capacity];
         for (int i = 0; i < size; i++) {
