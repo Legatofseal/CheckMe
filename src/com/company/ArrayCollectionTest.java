@@ -3,6 +3,7 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Objects;
 
 /**
  * Created by Legat on 16.04.2016.
@@ -83,7 +84,6 @@ public class ArrayCollectionTest {
     }
 
 
-
     public boolean removeElement(int index) {
         if (index < 0 || index > size - 1)
             return false;
@@ -97,10 +97,10 @@ public class ArrayCollectionTest {
 
     }
 
-    int indexOf(Object patern) {
+    public int indexOf(Object patern) {
         int result = -1;
         for (int i = 0; i < size; i++) {
-            if (patern.equals(internalArray[i])) {
+            if (Objects.equals(internalArray[i], patern)) {
                 result = i;
                 break;
             }
@@ -109,25 +109,25 @@ public class ArrayCollectionTest {
 
     }
 
-   public int lastIndexOf(Object patern) {
+    public int lastIndexOf(Object patern) {
         int result = -1;
-        for (int i = 0; i < size; i++) {
-            if (patern.equals(internalArray[i])) {
+        for (int i = size - 1; i >= 0; i--) {
+            if (Objects.equals(internalArray[i], patern)) {
                 result = i;
-
+                break;
             }
         }
         return result;
     }
 
-    public void sortObject (NewComparator comparator){
+    public void sortObject(NewComparator comparator) {
         int n = internalArray.length;
-       Object temp;
+        Object temp;
         boolean flag;
         for (int i = 0; i < n - 1; i++) {
             flag = false;
             for (int j = 0; j < n - i - 1; j++) {
-                if (comparator.compare(internalArray[j], internalArray[j + 1])==1) {
+                if (comparator.compare(internalArray[j], internalArray[j + 1]) == 1) {
                     temp = internalArray[j];
                     internalArray[j] = internalArray[j + 1];
                     internalArray[j + 1] = temp;
@@ -139,17 +139,23 @@ public class ArrayCollectionTest {
 
         }
     }
-    public void quickSortObject (NewComparator comparator){
-      ArrayList<Object> myList= new ArrayList<Object>(Arrays.asList(internalArray));
+
+    public Object[] getInternalArray() {
+        return internalArray;
+    }
+
+    public void quickSortObject(NewComparator comparator) {
+        ArrayList<Object> myList = new ArrayList<Object>(Arrays.asList(internalArray));
         myList.sort(comparator);
         internalArray = myList.toArray();
 
     }
-    Object getMax (NewComparator comparator){
+
+    Object getMax(NewComparator comparator) {
         Object temp = internalArray[0];
-        for (int i=0; i<size-1; i++){
-            if (comparator.compare(internalArray[i+1],internalArray[i])==1){
-                temp = internalArray[i+1];
+        for (int i = 0; i < size - 1; i++) {
+            if (comparator.compare(internalArray[i + 1], internalArray[i]) == 1) {
+                temp = internalArray[i + 1];
 
             }
         }

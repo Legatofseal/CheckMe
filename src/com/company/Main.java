@@ -7,7 +7,7 @@ import java.time.LocalTime;
 public class Main {
 
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) throws Exception {
        /* System.out.print("Hello");
         ArrayCollectionTest test = new ArrayCollectionTest();
         test.addElement("test1");
@@ -18,7 +18,7 @@ public class Main {
         test.addElement("test5");
         test.quickSortObject(new NewComparator());*/
 
-        ArrayCollectionTest test1 = new ArrayCollectionTest(100000);
+       /* ArrayCollectionTest test1 = new ArrayCollectionTest(100000);
         ArrayCollectionTest test2 = new ArrayCollectionTest(100000);
         Double [] array =  new Double [100000];
         for (int i=0; i<100000; i++){
@@ -34,7 +34,9 @@ public class Main {
         test1.sortObject(comparator);
         System.out.println(LocalTime.now());
         test2.quickSortObject(comparator);
-        System.out.println(LocalTime.now());
+        System.out.println(LocalTime.now());*/
+        ArrayCollectionTestTest testTest = new ArrayCollectionTestTest();
+        testTest.testAddElement();
     }
 
 }
