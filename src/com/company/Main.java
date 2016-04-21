@@ -3,6 +3,7 @@ package com.company;
 import java.lang.String;
 import java.security.Timestamp;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -27,7 +28,7 @@ public class Main {
             test2.addElement(array[i]);
         }
 
-
+        Arr
 
         NewComparator comparator = new NewComparator();
         System.out.println(LocalTime.now());
@@ -35,6 +36,7 @@ public class Main {
         System.out.println(LocalTime.now());
         test2.quickSortObject(comparator);
         System.out.println(LocalTime.now());*/
+
         ArrayCollectionTestTest testTest = new ArrayCollectionTestTest();
         testTest.testAddElement();
     }

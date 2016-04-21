@@ -1,5 +1,7 @@
 package com.company;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -57,7 +59,7 @@ public class ArrayCollectionTest {
         ++size;
 
     }
-
+    @Test
     public void addElement(Object object) {
         if (size < capacity) {
             internalArray[size] = object;
@@ -120,7 +122,7 @@ public class ArrayCollectionTest {
         return result;
     }
 
-    public void sortObject(NewComparator comparator) {
+    public void sortObject(Comparator comparator) {
         int n = internalArray.length;
         Object temp;
         boolean flag;
@@ -144,14 +146,14 @@ public class ArrayCollectionTest {
         return internalArray;
     }
 
-    public void quickSortObject(NewComparator comparator) {
+    public void quickSortObject(Comparator comparator) {
         ArrayList<Object> myList = new ArrayList<Object>(Arrays.asList(internalArray));
         myList.sort(comparator);
         internalArray = myList.toArray();
 
     }
 
-    Object getMax(NewComparator comparator) {
+    Object getMax(Comparator comparator) {
         Object temp = internalArray[0];
         for (int i = 0; i < size - 1; i++) {
             if (comparator.compare(internalArray[i + 1], internalArray[i]) == 1) {
@@ -160,5 +162,15 @@ public class ArrayCollectionTest {
             }
         }
         return temp;
+    }
+    private String outOfBoundsMsg(int index) {
+        return "Index: "+index+", Size: "+size;
+    }
+
+    public Object getElement (int index)  {
+        if (index<0||index>size)
+            throw new IndexOutOfBoundsException("Out of range"+index);
+        else
+        return internalArray[index];
     }
 }
