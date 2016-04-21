@@ -1,5 +1,9 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  * Created by Legat on 16.04.2016.
  */
@@ -7,6 +11,10 @@ public class ArrayCollectionTest {
     int capacity = 500;
     int size = 0;
     Object[] internalArray;
+
+    public void setInternalArray(Object[] internalArray) {
+        this.internalArray = internalArray;
+    }
 
     //I made some changes
     //some other change
@@ -74,17 +82,55 @@ public class ArrayCollectionTest {
         return a > b;
     }
 
-    public int[] sortArray(int[] array, IntComparator comparator) {
-        int n = array.length;
-        int temp;
+
+
+    public boolean removeElement(int index) {
+        if (index < 0 || index > size - 1)
+            return false;
+        else {
+            for (int i = index; i < size - 1; i++) {
+                internalArray[i] = internalArray[i + 1];
+            }
+            size--;
+            return true;
+        }
+
+    }
+
+    int indexOf(Object patern) {
+        int result = -1;
+        for (int i = 0; i < size; i++) {
+            if (patern.equals(internalArray[i])) {
+                result = i;
+                break;
+            }
+        }
+        return result;
+
+    }
+
+   public int lastIndexOf(Object patern) {
+        int result = -1;
+        for (int i = 0; i < size; i++) {
+            if (patern.equals(internalArray[i])) {
+                result = i;
+
+            }
+        }
+        return result;
+    }
+
+    public void sortObject (NewComparator comparator){
+        int n = internalArray.length;
+       Object temp;
         boolean flag;
         for (int i = 0; i < n - 1; i++) {
             flag = false;
             for (int j = 0; j < n - i - 1; j++) {
-                if (comparator.isBigger(array[j], array[j+1])) {
-                    temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
+                if (comparator.compare(internalArray[j], internalArray[j + 1])==1) {
+                    temp = internalArray[j];
+                    internalArray[j] = internalArray[j + 1];
+                    internalArray[j + 1] = temp;
                     flag = true;
                 }
             }
@@ -92,6 +138,21 @@ public class ArrayCollectionTest {
                 break;
 
         }
-        return array;
+    }
+    public void quickSortObject (NewComparator comparator){
+      ArrayList<Object> myList= new ArrayList<Object>(Arrays.asList(internalArray));
+        myList.sort(comparator);
+        internalArray = myList.toArray();
+
+    }
+    Object getMax (NewComparator comparator){
+        Object temp = internalArray[0];
+        for (int i=0; i<size-1; i++){
+            if (comparator.compare(internalArray[i+1],internalArray[i])==1){
+                temp = internalArray[i+1];
+
+            }
+        }
+        return temp;
     }
 }
